@@ -1,0 +1,12 @@
+{
+  "host": "localhost",
+  "port": 3030,
+  "mongodb": "mongodb://localhost:27017/MovieAdvisor",
+  "public": "../public/",
+  "auth": {
+    "token": {
+      "secret": "UrXyMjCQx6cRJmVF76FaqL+FcLBhnov1kauxGdAajq53+xtxr9urIKIpziNUGLTxUc2nSAXD3FTOAKLAK+w8EA=="
+    },
+    "local": {}
+  }
+}
