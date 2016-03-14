@@ -11,13 +11,14 @@ This project uses [Feathers](http://feathersjs.com). An open source web  framewo
 Getting up and running is as easy as 1, 2, 3.
 
 1. Make sure you have [NodeJS](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
-2. Install your dependencies
+2. Make sure you have [MongoDB](https://www.mongodb.org/) installed and running.
+3. Install your dependencies
     
     ```
     cd path/to/MovieAdvisor; npm install
     ```
 
-3. Start your app
+4. Start your app
     
     ```
     npm start
@@ -25,7 +26,6 @@ Getting up and running is as easy as 1, 2, 3.
 ## Technologies
 The Project makes use of the following libaries:
 
-**Client**
 - [React](https://facebook.github.io/react/)
 - [Redux](http://redux.js.org/)
 
