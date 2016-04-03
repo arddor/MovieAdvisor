@@ -18,8 +18,8 @@
   "scripts": {
     "test": "npm run jshint && npm run mocha",
     "jshint": "jshint server/. test/. --config",
-    "start": "NODE_ENV=development node server/",
-    "build": "NODE_ENV=production webpack --config webpack.config.prod.js --display-error-details",
+    "start": "set NODE_ENV=development && node server/",
+    "build": "set NODE_ENV=production && webpack --config webpack.config.prod.js --display-error-details",
     "mocha": "mocha test/ --recursive"
   },
   "devDependencies": {
