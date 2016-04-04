@@ -18,7 +18,7 @@
   "scripts": {
     "test": "npm run jshint && npm run mocha",
     "jshint": "jshint server/. test/. --config",
-    "start": "set NODE_ENV=development && node server/",
+    "start": "SET NODE_ENV=development && node server/",
     "build": "set NODE_ENV=production && webpack --config webpack.config.prod.js --display-error-details",
     "mocha": "mocha test/ --recursive"
   },
@@ -38,7 +38,7 @@
     "cssnext-loader": "^1.0.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "feathers": "^2.0.0",
-    "feathers-authentication": "^0.4.1",
+    "feathers-authentication": "^0.7.0",
     "feathers-configuration": "^0.2.1",
     "feathers-errors": "^2.0.1",
     "feathers-hooks": "^1.4.0",
