@@ -6,15 +6,26 @@ import {add} from './HelloDucks';
 import css from './Hello.local.css';
 
 class Hello extends Component {
+
+  constructor(props){
+    super(props);
+
+    this.onButtonPress = this.onButtonPress.bind(this);
+  }
+
+  onButtonPress(){
+    this.props.add('abc');
+  }
+
   render() {
     const list = this.props.list.map(item => {
-      return <h1>item</h1>;
+      return <h1>{item}</h1>;
     });
 
     return (
       <div>
         <h1 className={css.div}>{this.props.name}</h1>
-        <button onClick={this.props.add}>ADD NEW</button>
+        <button onClick={this.onButtonPress}>ADD NEW</button>
         {list}
         <input type="text"/>
       </div>

@@ -18,7 +18,7 @@
   "scripts": {
     "test": "npm run jshint && npm run mocha",
     "jshint": "jshint server/. test/. --config",
-    "start": "SET NODE_ENV=development && node server/",
+    "start": "set NODE_ENV=development && node server/",
     "build": "set NODE_ENV=production && webpack --config webpack.config.prod.js --display-error-details",
     "mocha": "mocha test/ --recursive"
   },

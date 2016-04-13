@@ -18,6 +18,6 @@ export default function reducer(state = initialState, action = {}) {
   }
 }
 
-export function add() {
-  return { type: ADD, payload: 'test'};
+export function add(name) {
+  return { type: ADD, payload: name};
 }
