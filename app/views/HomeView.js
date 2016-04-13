@@ -1,10 +1,14 @@
 import React from 'react';
 
 import Hello from '../components/hello';
+import Youtube from '../components/youtube';
 
 const HomeView = props => {
   return (
-    <Hello text="Welcome to Movie Advisor" />
+    <div>
+      <Hello text="Welcome to Movie Advisor" />
+      <Youtube />
+    </div>
   );
 };
 
