@@ -18,5 +18,4 @@ if (process.env.NODE_ENV === 'production'){
   )(createStore)
 }
 
-
 export default finalCreateStore(reducers);
