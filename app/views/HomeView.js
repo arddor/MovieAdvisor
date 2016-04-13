@@ -4,7 +4,7 @@ import Hello from '../components/hello';
 
 const HomeView = props => {
   return (
-    <Hello text="Welcome to Movie Advisor" />
+    <Hello test="Test" />
   );
 };
 
