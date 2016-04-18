@@ -1,46 +1,35 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {ButtonToolbar, Button, Glyphicon} from 'react-bootstrap';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
 import css from './HotList.css';
-import {ButtonToolbar, Button, Glyphicon} from 'react-bootstrap';
-import PubSub from 'pubsub-js';
-
-
-const HotList = React.createClass({
-  onMovieClicked(){
-    console.log("clicked on movie in movielist. open it in viewer");
-  },
-  getDefaultProps() {
-    return {
-      hot: 'Hot',
-      not: 'Not'
-    };
-  },
-
-  mySubscriber: function (event,data) {
-    console.log('movie to add to list: ' + data);
-  },
-
-  componentDidMount: function () {
-    var token = PubSub.subscribe('onMovieAddedToHotList', this.mySubscriber);
-
-  },
-  componentWillUnmount: function () {
-   //TODO unsubscribe to event onMovieAddedToHotList
-  },
+class HotList extends Component {
+  constructor(props) {
+    super(props);
+  }
 
   render() {
-
-
+    const hotlist = this.props.hotlist.map(item => {
+      return <h5>{item}</h5>;
+    });
     return (
       <div className="hotList">
         <h3>Your HOT List</h3>
+        {hotlist}
       </div>
     );
-  },
-
-  randomIDGenerator  (){
-    return Math.floor((Math.random() * 1000) + 1);
   }
+};
+
+
+HotList.defaultProps = {
+  hot: 'Hot',
+  not: 'Not'
+};
+
+const mapStateToProps = (state) => ({
+  ...state.hotOrNot
 });
 
-export default HotList;
+export default connect(mapStateToProps)(HotList);

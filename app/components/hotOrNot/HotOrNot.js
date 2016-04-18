@@ -1,46 +1,54 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {ButtonToolbar, Button, Glyphicon} from 'react-bootstrap';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as HotOrNotActionCreators from './HotOrNotDucks.js';
 
 import css from './HotOrNot.css';
-import {ButtonToolbar, Button, Glyphicon} from 'react-bootstrap';
-import PubSub from 'pubsub-js';
+class HotOrNot extends Component {
 
-const HotOrNot = React.createClass({
-  onNotClicked(event) {
-    console.log("current movieid is " + this.props.movieID);
-    console.log("on Not Clicked"); // React Component instance
+  constructor(props) {
+    super(props);
+    this.onHotClicked = this.onHotClicked.bind(this);
+    this.onNotClicked = this.onNotClicked.bind(this);
+  }
 
-    //TODO add to notshowagain list
-  },
-  onHotClicked(){
-    console.log("onHotClicked");
-    var randomID = this.randomIDGenerator();
-    console.log("add movie with id " + randomID + " to HOT List");
-    PubSub.publish('onMovieAddedToHotList', randomID);
+  randomIDGenerator() {
+    return Math.floor((Math.random() * 1000) + 1);
+  }
 
-    //store.dispatch
-    //add to hot list on the left
-  },
-  getDefaultProps() {
-    return {
-      hot: 'Hot',
-      not: 'Not'
-    };
-  },
+  onHotClicked() {
+    this.props.addToHot(this.randomIDGenerator());
+  }
+
+  onNotClicked() {
+    this.props.addToNot(this.randomIDGenerator());
+  }
 
   render() {
     return (
       <div className="hotOrNot">
         <ButtonToolbar>
           <Button bsSize="large" onClick={this.onHotClicked}><Glyphicon glyph="thumbs-up"/> {this.props.hot}</Button>
-          <Button bsSize="large" onClick={this.onNotClicked}><Glyphicon glyph="thumbs-down"/> {this.props.not} </Button>
+          <Button bsSize="large" onClick={this.onNotClicked}><Glyphicon glyph="thumbs-up"/> {this.props.hot}</Button>
         </ButtonToolbar>
       </div>
     );
-  },
-
-  randomIDGenerator  (){
-    return Math.floor((Math.random() * 1000) + 1);
   }
-});
+}
+;
 
-export default HotOrNot;
+HotOrNot.defaultProps = {
+  hot: 'Hot',
+  not: 'Not'
+};
+const mapStateToProps = (state) => ({
+  ...state.hotOrNot
+})
+;
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators(HotOrNotActionCreators, dispatch)
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HotOrNot);
