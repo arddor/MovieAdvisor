@@ -69,5 +69,9 @@
     "webpack-dev-middleware": "^1.5.1",
     "webpack-hot-middleware": "^2.10.0",
     "winston": "^2.2.0"
+  },
+  "dependencies": {
+    "redux-storage": "^4.0.0",
+    "redux-storage-engine-localstorage": "^1.0.2"
   }
 }
