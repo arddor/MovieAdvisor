@@ -20,6 +20,12 @@ module.exports = {
       }
     })
   ],
+  node: {
+    console: true,
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty'
+  },
   module: {
     loaders: [
       { test: /\.json$/, loader: "json-loader" },
@@ -43,6 +49,6 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx', '.webpack.js', '.web.js']
   }
 };
