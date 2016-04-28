@@ -5,10 +5,11 @@ module.exports = {
   devtool: 'cheap-module-eval-source-map',
 
   entry: ['webpack-hot-middleware/client',
-    __dirname + '/app/'
+    //__dirname + '/app/'
+    path.join(__dirname, 'app')
   ],
   output: {
-    path: __dirname + '/dist/',
+    path: path.join(__dirname, 'dis'),
     filename: 'bundle.js',
     publicPath: '/dist/'
   },
@@ -20,6 +21,12 @@ module.exports = {
       }
     })
   ],
+  node: {
+    console: true,
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty'
+  },
   module: {
     loaders: [
       { test: /\.json$/, loader: "json-loader" },
@@ -43,6 +50,6 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx', '.webpack.js', '.web.js']
   }
 };

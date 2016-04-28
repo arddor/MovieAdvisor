@@ -8,6 +8,7 @@ import routes from './routes';
 
 import bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
 import fontawesome from 'font-awesome/css/font-awesome.min.css';
+import reactselect from 'react-select/dist/react-select.min.css';
 
 ReactDOM.render(
   <Provider store={store}>

@@ -30,7 +30,7 @@ class HotOrNot extends Component {
       <div className="hotOrNot">
         <ButtonToolbar>
           <Button bsSize="large" onClick={this.onHotClicked}><Glyphicon glyph="thumbs-up"/> {this.props.hot}</Button>
-          <Button bsSize="large" onClick={this.onNotClicked}><Glyphicon glyph="thumbs-up"/> {this.props.hot}</Button>
+          <Button bsSize="large" onClick={this.onNotClicked}><Glyphicon glyph="thumbs-down"/> {this.props.not}</Button>
         </ButtonToolbar>
       </div>
     );
