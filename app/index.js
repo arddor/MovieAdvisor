@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import {Router, browserHistory, Route, IndexRoute} from 'react-router';
 
 import store from './redux/store';
-import routes from './routes';
+import App from './app';
 
 import bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
 import fontawesome from 'font-awesome/css/font-awesome.min.css';
@@ -12,8 +11,6 @@ import reactselect from 'react-select/dist/react-select.min.css';
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={browserHistory}>
-      {routes(store)}
-    </Router>
+    <App />
   </Provider>, document.getElementById('root')
 );

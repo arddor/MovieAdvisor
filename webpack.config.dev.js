@@ -2,31 +2,22 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
-  devtool: 'cheap-module-eval-source-map',
-
-  entry: ['webpack-hot-middleware/client',
-    //__dirname + '/app/'
+  entry: [
+    'webpack-dev-server/client?http://localhost:3030',
+    'webpack/hot/dev-server',
     path.join(__dirname, 'app')
   ],
+
   output: {
-    path: path.join(__dirname, 'dis'),
+    path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
     publicPath: '/dist/'
   },
+
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.DefinePlugin({
-      'process.env': {
-        CLIENT: JSON.stringify(true)
-      }
-    })
+    new webpack.HotModuleReplacementPlugin()
   ],
-  node: {
-    console: true,
-    fs: 'empty',
-    net: 'empty',
-    tls: 'empty'
-  },
+
   module: {
     loaders: [
       { test: /\.json$/, loader: "json-loader" },
@@ -49,7 +40,15 @@ module.exports = {
       { test: /.(png|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/, loader: 'url-loader?limit=100000' }
     ]
   },
+
   resolve: {
     extensions: ['', '.js', '.jsx', '.webpack.js', '.web.js']
+  },
+
+  devServer: {
+    inline: true,
+    hot: true,
+    port: 3030,
+    contentBase: path.join(__dirname, 'public')
   }
 };
