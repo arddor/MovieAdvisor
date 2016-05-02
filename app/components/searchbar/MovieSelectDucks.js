@@ -3,8 +3,8 @@ const UPDATEKEYWORD = 'movieadvisor/searchbar/updateKeyword';
 
 
 const initialState = {
-  genre: '',
-  keyword: ''
+  genres: [],
+  keywords: []
 };
 
 export default function reducer(state = initialState, action = {}) {
@@ -12,13 +12,13 @@ export default function reducer(state = initialState, action = {}) {
     case UPDATEGENRE:
       return {
         ...state,
-        genre: action.payload
+        genres: [...state.genres, action.payload]
       };
 
     case UPDATEKEYWORD:
       return {
         ...state,
-        keyword: action.payload
+        keywords: [...state.keywords, action.payload]
       };
 
     default:
