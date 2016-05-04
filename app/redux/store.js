@@ -1,6 +1,4 @@
 import { createStore, applyMiddleware, compose  } from 'redux';
-import {browserHistory} from 'react-router';
-import {syncHistory} from 'redux-simple-router';
 import reducers from './reducers';
 import thunk from 'redux-thunk';
 
@@ -11,8 +9,7 @@ const reducer = storage.reducer(reducers);
 const engine = createEngine('movieadvisor');
 const storageMiddleware = storage.createMiddleware(engine);
 
-const reduxRouterMiddleware = syncHistory(browserHistory);
-let middleware = [reduxRouterMiddleware, thunk, storageMiddleware];
+let middleware = [thunk, storageMiddleware];
 
 let finalCreateStore;
 if (process.env.NODE_ENV === 'production') {
