@@ -1,10 +1,19 @@
 const UPDATEGENRE = 'movieadvisor/searchbar/updateGenre';
 const UPDATEKEYWORD = 'movieadvisor/searchbar/updateKeyword';
+const UPDATEACTOR = 'movieadvisor/searchbar/updateActor';
 
+import apiConfig from './MovieDBConfig'
+import TmdbApi from 'moviedb-api';
+
+var api = new TmdbApi({
+  consume: false,
+  apiKey: apiConfig.apiKey
+});
 
 const initialState = {
   genres: [],
-  keywords: []
+  keywords: [],
+  actors: []
 };
 
 export default function reducer(state = initialState, action = {}) {
@@ -21,6 +30,12 @@ export default function reducer(state = initialState, action = {}) {
         keywords: [...state.keywords, action.payload]
       };
 
+    case UPDATEACTOR:
+      return {
+        ...state,
+        actors: [...state.actors, action.payload]
+      };
+
     default:
       return state;
   }
@@ -32,4 +47,8 @@ export function updateGenre(genre) {
 
 export function updateKeyword(keyword) {
   return {type: UPDATEKEYWORD, payload: keyword};
+}
+
+export function updateActor(actor) {
+  return {type: UPDATEACTOR, payload: actor};
 }

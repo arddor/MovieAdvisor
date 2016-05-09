@@ -48,7 +48,7 @@
     "react-input-range": "^0.6.2",
     "react-redux": "^4.4.1",
     "react-redux-form": "^0.9.13",
-    "react-select": "^1.0.0-beta12",
+    "react-select": "^1.0.0-beta13",
     "react-select-popover": "^0.1.1",
     "react-slider": "^0.6.1",
     "redux": "^3.3.1",
