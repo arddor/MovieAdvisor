@@ -16,11 +16,10 @@ class SearchBar extends Component{
 
   onButtonClick(){
     console.log(this.props.genres);
-    this.props.search(this.props.genres);
+    this.props.search(this.props.genres, this.props.keywords);
   }
 
   render() {
-
     return (
       <div>
         <h1 className={css.div}>{this.props.text}</h1>

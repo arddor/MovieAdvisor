@@ -25,7 +25,7 @@ export default function reducer(state = initialState, action = {}) {
       };
 
     case NEXT:
-      if (state.index < 20){
+      if (state.index < 19){
         return {
           ...state,
           index: state.index + 1
@@ -62,9 +62,9 @@ export function changePlaylist(list) {
 }
 
 
-export function search(genres){
+export function search(genres, keywords){
   return dispatch => {
-    discoverWithVideo(genres)
+    discoverWithVideo(genres, keywords)
       .then(res => dispatch(changePlaylist(res)))
   }
 }
