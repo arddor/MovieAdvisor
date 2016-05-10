@@ -3,61 +3,9 @@ import Select from 'react-select';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as ApiActionCreators from './MovieSelectDucks.js';
-import apiConfig from './MovieDBConfig';
-import TmdbApi from 'moviedb-api';
 
-var api = new TmdbApi({
-  consume: false,
-  apiKey: apiConfig.apiKey
-});
+import {getGenres, getKeywords, getActors} from '../../utils/api';
 
-var getGenres = function (input, callback) {
-  var genreList = [];
-  var apiGenres = [];
-  api.request('/genre/movie/list', 'GET').then(function (data) {
-      apiGenres = data.genres;
-      for (var i = 0; i < apiGenres.length; i++) {
-        genreList[i] = {label: apiGenres[i].name, value: apiGenres[i].id}
-      }
-      callback(null, {options: genreList, complete: true});
-    })
-    .catch(function (e) {
-      console.log(e);
-    });
-};
-var getKeywords = function (input, callback) {
-
-  var keywordList = [];
-  var apiKeywords = [];
-  if (this.props !== undefined) {
-
-  }
-  api.request('/search/keyword', 'GET', {query: input}).then(function (data) {
-      apiKeywords = data.results;
-      for (var i = 0; i < apiKeywords.length; i++) {
-        keywordList[i] = {label: apiKeywords[i].name, value: apiKeywords[i].id}
-      }
-      callback(null, {options: keywordList, complete: false});
-    })
-    .catch(function (e) {
-      console.log(e);
-    })
-};
-var getActors = function (input, callback) {
-
-  var actorList = [];
-  var apiActors = [];
-  api.request('/search/person', 'GET', {query: input}).then(function (data) {
-      apiActors = data.results;
-      for (var i = 0; i < apiActors.length; i++) {
-        actorList[i] = {label: apiActors[i].name, value: apiActors[i].id}
-      }
-      callback(null, {options: actorList, complete: false});
-    })
-    .catch(function (e) {
-      console.log(e);
-    })
-};
 var MovieSelect = React.createClass({
   displayName: 'MultiSelectField',
   propTypes: {
