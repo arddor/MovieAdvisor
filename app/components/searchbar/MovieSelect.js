@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as ApiActionCreators from './MovieSelectDucks.js';
 
-import {getGenres, getKeywords, getActors} from '../../utils/api';
+import {getGenres, getKeywords, getActors, discoverWithVideo} from '../../utils/api';
 
 var MovieSelect = React.createClass({
   displayName: 'MultiSelectField',
@@ -27,8 +27,8 @@ var MovieSelect = React.createClass({
   render()
   {
     return (
-      <div class="row">
-        <div class="col-xs-6">
+      <div className="row">
+        <div className="col-xs-6">
           <div className="section">
             <h3 className="section-heading">Genre</h3>
             <Select.Async
@@ -41,7 +41,7 @@ var MovieSelect = React.createClass({
             />
           </div>
         </div>
-        <div class="col-xs-6">
+        <div className="col-xs-6">
           <div className="section">
             <h3 className="section-heading">Keyword</h3>
             <Select.Async
@@ -54,7 +54,7 @@ var MovieSelect = React.createClass({
             />
           </div>
         </div>
-        <div class="col-xs-6">
+        <div className="col-xs-6">
           <div className="section">
             <h3 className="section-heading">Exclude Actor</h3>
             <Select.Async

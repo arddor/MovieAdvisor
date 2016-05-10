@@ -18,7 +18,7 @@ export const getGenres = (input='', callback) => {
     .catch(err => console.log(err));
 };
 
-export const getKeywords = (input='a', callback) => {
+export const getKeywords = (input='', callback) => {
   api.request('/search/keyword', 'GET', {query: input})
     .then(res => {
       return res.results.map(item => {
@@ -38,4 +38,35 @@ export const getActors = (input='', callback) => {
     })
     .then(json => callback(null, {options: json, complete: false}))
     .catch(err => console.log(err));
+};
+
+export const discover = (genres=null, keywords=null) => {
+  let g = genres ? genres.map(item => item.value).join() : null;
+  let k = keywords ? keywords.map(item => item.value).join() : null;
+  return api.request('/discover/movie', 'GET', {with_genres: g, with_keywords: k})
+    .then(res => res)
+};
+
+export const getVideos = (id, language='en') => {
+  return api.request(`/movie/${id}/videos`, 'GET', {language})
+};
+
+
+export const discoverWithVideo = (genres=null, keywords=null) => {
+  return discover(genres, keywords)
+    .then(res => {
+      return Promise.all(
+        res.results.map(item => getVideos(item.id)
+          .then(videos => videos.results[0])
+        )
+      ).then(list => {
+        return {
+          ...res,
+          results: res.results.map((item, index) => {
+            item.youtube = list[index];
+            return item;
+          })
+        }
+      })
+    })
 };

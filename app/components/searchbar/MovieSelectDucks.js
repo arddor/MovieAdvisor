@@ -2,14 +2,6 @@ const UPDATEGENRE = 'movieadvisor/searchbar/updateGenre';
 const UPDATEKEYWORD = 'movieadvisor/searchbar/updateKeyword';
 const UPDATEACTOR = 'movieadvisor/searchbar/updateActor';
 
-import apiConfig from './MovieDBConfig'
-import TmdbApi from 'moviedb-api';
-
-var api = new TmdbApi({
-  consume: false,
-  apiKey: apiConfig.apiKey
-});
-
 const initialState = {
   genres: [],
   keywords: [],
