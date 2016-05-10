@@ -21,19 +21,19 @@ export default function reducer(state = initialState, action = {}) {
     case UPDATEGENRE:
       return {
         ...state,
-        genres: [...state.genres, action.payload]
+        genres: [...action.payload]
       };
 
     case UPDATEKEYWORD:
       return {
         ...state,
-        keywords: [...state.keywords, action.payload]
+        keywords: [...action.payload]
       };
 
     case UPDATEACTOR:
       return {
         ...state,
-        actors: [...state.actors, action.payload]
+        actors: [...action.payload]
       };
 
     default:

@@ -63,51 +63,18 @@ var MovieSelect = React.createClass({
   propTypes: {
     label: React.PropTypes.string
   },
-  getInitialState () {
-    return {
-      disabled: false
-    };
-  },
 
   handleGenreChange (e) {
-    if (e == null) {
-      this.setState({disabled: false, genres: []});
-      this.props.updateGenre([]);
-    } else {
-      var genres = e.map(item => {
-        if (item.value !== undefined) {
-          if (this.props.genres.indexOf(item.value) == -1) {
-            this.props.updateGenre(item.value);
-          }
-        }
-      });
-    }
+    if (e == null) this.props.updateGenre([]);
+    else this.props.updateGenre(e);
   },
   handleKeywordsChange (e){
-    if (e.length == 0) {
-      this.setState({disabled: false, keywords: []});
-      this.props.updateKeyword([]);
-    } else {
-      e.map(item => {
-        if (item.value !== undefined) {
-          if (this.props.keywords.indexOf(item.value) == -1) {
-            this.props.updateKeyword(item.value);
-          }
-        }
-      });
-    }
+    if (e == null) this.props.updateKeyword([]);
+    else this.props.updateKeyword(e);
   },
   handleActorChange (e){
-    if (e == null) {
-      this.setState({disabled: false, actors: []});
-      this.props.updateActor([]);
-    } else {
-      var actors = e.map(item => {
-        if (item.value !== undefined) {
-          this.props.updateActor(item.value);
-        }
-      });
-    }
+    if (e == null) this.props.updateActor([]);
+    else this.props.updateActor(e);
   },
   render()
   {
