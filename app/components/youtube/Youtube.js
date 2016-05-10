@@ -1,18 +1,43 @@
-import React from 'react';
+import React, {Component} from 'react';
+import YouTube from 'react-youtube';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {next} from '../../redux/playlist';
 
-const Youtube = props => {
-  return(
-    <div>
-      <iframe type="text/html" width={props.width} height={props.height} src = {props.url} frameborder="0"
-              autoplay allowfullscreen> </iframe>
-    </div>
-  );
+const opts = {
+  playerVars: {
+    autoplay: 1
+  }
 };
+
+class Youtube extends Component {
+  constructor(props){
+    super(props);
+
+    this.onPlaybackEnd = this.onPlaybackEnd.bind(this);
+  }
+
+  onPlaybackEnd(){
+    this.props.next();
+  }
+
+  render() {
+    return (
+      <YouTube
+        videoId={this.props.id}
+        opts={opts}
+        onEnd={this.onPlaybackEnd}
+      />
+    );
+  }
+}
 
 Youtube.defaultProps = {
-  width: "420",
-  height: "315",
-  url: "http://www.youtube.com/embed/XGSy3_Czz8k?autoplay=1?autohide=1&fs=1"
+  id: "daFnEiLEx70"
 };
 
-export default Youtube;
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({next}, dispatch)
+};
+
+export default connect(null, mapDispatchToProps)(Youtube);
