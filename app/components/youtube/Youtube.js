@@ -6,7 +6,7 @@ import {next} from '../../redux/playlist';
 
 const opts = {
   playerVars: {
-    autoplay: 1
+    autoplay: 0
   }
 };
 

@@ -3,3 +3,8 @@
 .div{
   background-color: #efefef;
 }
+.btnhide{
+  float:right;
+  margin-bottom: 20px;
+  margin-top: -45px;
+}

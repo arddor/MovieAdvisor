@@ -5,22 +5,22 @@ import {next, previous} from '../../redux/playlist';
 import {Row, Col, Button} from 'react-bootstrap';
 import Youtube from '../youtube';
 
-import css from './player.local.css';
+import playercss from './player.local.css';
 
 
 class Player extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.onPreviousClick = this.onPreviousClick.bind(this);
     this.onNextClick = this.onNextClick.bind(this);
   }
 
-  onPreviousClick(){
+  onPreviousClick() {
     this.props.previous();
   }
 
-  onNextClick(){
+  onNextClick() {
     this.props.next();
   }
 
@@ -30,22 +30,26 @@ class Player extends Component {
     let player;
     if (results.length > 0 && results.length >= index) {
       let {key} = results[index].youtube;
-      player = <Youtube id={key} />;
+      player = <Youtube id={key}/>;
     } else {
       player = <di>NOTHING FOUND</di>
     }
 
     return (
       <Row>
-        <Col xs={1}>
-          <Button onClick={this.onPreviousClick}>Previous</Button>
-        </Col>
-        <Col xs={10} className={css.frame}>
-          {player}
-        </Col>
-        <Col xs={1}>
-          <Button onClick={this.onNextClick}>Next</Button>
-        </Col>
+        <Row>
+          <Col xs={6}>
+            <Button className={playercss.navbtnprev} onClick={this.onPreviousClick}>Previous</Button>
+          </Col>
+          <Col xs={6}>
+            <Button className={playercss.navbtnnext} onClick={this.onNextClick}>Next</Button>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12} className={playercss.frame}>
+            <div className="embed-responsive.embed-responsive-16by9">{player}</div>
+          </Col>
+        </Row>
       </Row>
     );
   }

@@ -11,6 +11,7 @@ const App = props => {
   return (
     <Grid>
       <div>
+        <h1>Movie Advisor</h1>
         <SearchBar/>
         <Player />
         <HotOrNot movieID="irgendwas"/>
