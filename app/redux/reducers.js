@@ -1,8 +1,13 @@
 import { combineReducers } from 'redux';
-import { routeReducer } from 'redux-simple-router';
+import hotOrNot from '../components/hotOrNot/HotOrNotDucks.js';
+import search from '../components/searchbar/MovieSelectDucks.js';
+import playlist from './playlist';
 
 const rootReducer = combineReducers({
-  routing: routeReducer
+  hotOrNot,
+  search,
+  playlist
 });
+
 
 export default rootReducer;
