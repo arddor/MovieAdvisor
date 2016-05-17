@@ -8,31 +8,30 @@ class MovieInfo extends Component {
 
 
   render() {
-    /*const hotlist = this.props.hotlist.map(item => {
-      return <h5>{item}</h5>;
-    });*/
-    var movieTitle;
-    if (this.props.results[0] == null) {
-      this.props.results[0] =
+    let {index, results} = this.props;
+
+    let movieInfo = null;
+    if (results.length > 0 && results.length >= index) {
+      let info = results[index];
+
+      movieInfo = (
+        <div className="MovieInfo">
+          <h1>{info.title}</h1>
+          <h3>{info.overview}</h3>
+        </div>
+      );
+    } else {
+      // can be removed if the variable movieInfo is null nothing is shown
+      movieInfo = <div>NOTHING FOUND</div>
     }
 
-    var indexLoc = this.props.index;
-    //var rating =  'asdfsad';//this.props.results[indexLoc].;
 
     return (
-      <div className="MovieInfo">
-        <h1>{this.props.results[indexLoc].title}</h1>
-        <h3>{this.props.results[indexLoc].overview}</h3>
+      <div>
+        {movieInfo}
       </div>
     );
-    /*return (
-      <div className="MovieInfo">
-        <h1>{rating}</h1>
-        <h3>{rating}</h3>
-      </div>
-    );*/
   }
-
 }
 
 MovieInfo.defaultProps = {
