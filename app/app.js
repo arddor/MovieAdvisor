@@ -4,6 +4,7 @@ import HotList from './components/hotList';
 import HotOrNot from './components/hotOrNot';
 import SearchBar from "./components/searchbar";
 import Player from './components/player';
+import MovieInfo from './components/MovieInfo'
 import {Grid} from 'react-bootstrap';
 
 
@@ -16,6 +17,7 @@ const App = props => {
         <Player />
         <HotOrNot movieID="irgendwas"/>
         <HotList />
+        <MovieInfo />
       </div>
     </Grid>
   );
