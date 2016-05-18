@@ -1,5 +1,4 @@
-import React from 'react';
-
+/*
 import Hello from '../components/hello';
 import Keyword from '../components/keywords';
 

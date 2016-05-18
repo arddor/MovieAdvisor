@@ -31,7 +31,7 @@ class Hello extends Component {
       </div>
     );
   }
->>>>>>> searchbar
+
 };
 
 Hello.defaultProps = {
