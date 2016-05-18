@@ -27,6 +27,7 @@ class SearchBar extends Component {
       this.props.yearRange.min,
       this.props.yearRange.max
     );
+    this.setState({open: false});
   }
 
   onPanelOpen(){
@@ -34,20 +35,23 @@ class SearchBar extends Component {
   }
 
   render() {
+    const title = (
+      <h1 className={searchcss.title} onClick={this.onPanelOpen}>Movie Advisor <div className={searchcss.smallTitle}>Search your movies</div></h1>
+    );
+
     return (
-      <div>
+      <div className={searchcss.searchbar}>
         <Panel header={title} bsStyle="primary" collapsible expanded={this.state.open}
-               className={this.state.open ? searchcss.panelOpen : searchcss.panelClosed} onClick={this.onPanelOpen}>
+               className={searchcss.panel}>
           <MovieSelect />
-          <Button className="btn-block" onClick={this.onButtonClick}>Search</Button>
+          <Button className="btn-block" onClick={this.onButtonClick} style={{marginBottom: '15px'}}>Search</Button>
         </Panel>
+        <div className={this.state.open ? searchcss.open : searchcss.closed} onClick={this.onPanelOpen}></div>
       </div>
     );
   }
 }
-const title = (
-  <h1 className={searchcss.title}>Movie Advisor <div className={searchcss.smallTitle}>Search your movies</div></h1>
-);
+
 SearchBar.defaultProps = {
   text: 'Search Here:'
 };

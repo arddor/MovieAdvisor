@@ -7,6 +7,10 @@
   margin-top: -45px;
 }
 
+.searchbar{
+  margin-bottom: 20px;
+}
+
 .title{
   font-size: 30px;
 }
@@ -17,14 +21,14 @@
   font-size: 15px;
 }
 
-.panelClosed{
-  margin-bottom: 50px;
+.panel{
+  margin-bottom: 0px;
 }
 
-.panelClosed:after{
+.closed{
   content: ' ';
   height: 0;
-  position: absolute;
+  position: relative;
   width: 0;
   border-left: 25px solid transparent;
   border-right: 25px solid transparent;
@@ -35,11 +39,7 @@
   z-index: 1;
 }
 
-.panelOpen{
-  margin-bottom: 50px;
-}
-
-.panelOpen:after{
+.open{
   content: ' ';
   height: 0;
   position: relative;
@@ -48,8 +48,7 @@
   border-bottom: 25px solid #337ab7;
   border-left: 25px solid transparent;
 
-  /* positioning */
   left: 48%;
-  bottom: 23px;
+  bottom: 25px;
   z-index: 1;
 }
