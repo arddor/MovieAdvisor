@@ -1,26 +1,30 @@
 import React, {Component} from 'react';
-import {ButtonToolbar, Button, Glyphicon} from 'react-bootstrap';
+import {Row, Col, Image, Button} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import hotlistcss from './HotList.local.css';
 
-import css from './HotList.css';
 class HotList extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    const hotlist = this.props.hotlist.map(item => {
-      return <h5>{item}</h5>;
-    });
+    var results = this.props.hotlist;
     return (
-      <div className="hotList">
-        <h3>Your HOT List</h3>
-        {hotlist}
+      <div>
+        <h5>Your Hotlist</h5>
+        {results.map(function (result) {
+          return <Row className={hotlistcss.hotlistitem} key={result.id}>
+            <Col md={5}><Image responsive src={"http://image.tmdb.org/t/p/w300"+result.backdrop_path}/></Col>
+            <Col md={7}> {result.original_title}</Col>
+          </Row>;
+        })}
       </div>
     );
   }
-};
+}
+;
 
 
 HotList.defaultProps = {

@@ -26,10 +26,10 @@ export default function reducer(state = initialState, action = {}) {
   }
 }
 
-export function addToHot(name) {
-  return {type: ADDTOHOT, payload: name};
+export function addToHot(movieObj) {
+  return {type: ADDTOHOT, payload: movieObj};
 }
 
-export function addToNot(name) {
-  return {type: ADDTONOT, payload: name};
+export function addToNot(movieObj) {
+  return {type: ADDTONOT, payload: movieObj};
 }

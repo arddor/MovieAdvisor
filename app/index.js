@@ -12,5 +12,6 @@ import reactselect from 'react-select/dist/react-select.min.css';
 ReactDOM.render(
   <Provider store={store}>
     <App />
+
   </Provider>, document.getElementById('root')
 );
