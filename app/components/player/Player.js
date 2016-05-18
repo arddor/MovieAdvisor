@@ -29,8 +29,16 @@ class Player extends Component {
 
     let player;
     if (results.length > 0 && results.length > index) {
-      let {key} = results[index].youtube;
-      player = <Youtube id={key}/>;
+      if (results[index].youtube) {
+        let {key} = results[index].youtube;
+
+
+        player = <Youtube id={key}/>;
+      }
+      else {
+        player = <div>NO VIDEO FOUND</div>
+      }
+
     } else {
       player = <div>NOTHING FOUND</div>
     }

@@ -10,19 +10,19 @@ import {Grid, Row, Col} from 'react-bootstrap';
 
 const App = props => {
   return (
-    <Grid>
+    <Grid fluid>
       <Row>
-        <SearchBar/>
+        <Col md={6} xsOffset={3}><SearchBar/></Col>
       </Row>
       <Row>
-        <Col md={2}>
+        <Col md={3}>
           <HotList/>
         </Col>
-        <Col md={8}>
+        <Col md={6}>
           <Player />
-          <HotOrNot movieID="irgendwas"/>
+          <HotOrNot/>
         </Col>
-        <Col md={2}>
+        <Col md={3}>
           <MovieInfo />
         </Col>
       </Row>

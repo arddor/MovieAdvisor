@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Row, Col, Image, Button, Glyphicon} from 'react-bootstrap';
+import {Row, Col, Image, Button, Glyphicon, ListGroup, ListGroupItem, Panel} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import hotlistcss from './HotList.local.css';
@@ -10,6 +10,10 @@ class HotList extends Component {
     super(props);
     this.clearHotlist = this.clearHotlist.bind(this);
     this.remove = this.remove.bind(this);
+    this.onPanelOpen = this.onPanelOpen.bind(this);
+    this.state = {
+      open: true
+    }
   }
 
   clearHotlist() {
@@ -20,26 +24,38 @@ class HotList extends Component {
     this.props.removeFromHotlist(index);
   }
 
+
+  onPanelOpen() {
+    this.setState({open: !this.state.open});
+  }
+
   render() {
     var results = this.props.hotlist;
-
-
+    const title = (
+      <h1>Your Hotlist</h1>
+    );
     return (
       <div>
-        <h5>Your Hotlist</h5>
-        {results.map(function (result, index) {
-          return <Row className={hotlistcss.hotlistitem} key={result.id}>
-            <Col md={5}><Image responsive src={"http://image.tmdb.org/t/p/w300"+result.backdrop_path}/></Col>
-            <Col md={7}> {result.original_title}
-            <Button onClick={() => this.remove(index)}>Remove from Hotlist</Button></Col>
-          </Row>;
-        }, this)}
-        < Button
-          bsSize="large"
-          onClick={this.clearHotlist}><
-          Glyphicon
-          glyph="thumbs-up"/> {this.props.clear}</
-          Button >
+        <Panel header={title}>
+          <ListGroup>
+            {results.map(function (result, index) {
+              return <ListGroupItem><Row className={hotlistcss.hotlistitem} key={result.id}>
+                <Col md={5}><Image responsive src={"http://image.tmdb.org/t/p/w300"+result.backdrop_path}/></Col>
+                <Col md={5}> {result.original_title}
+                </Col>
+                <Col md={2}><Button onClick={() => this.remove(index)} bsSize="xsmall">
+                  <Glyphicon
+                    glyph="trash"/></Button></Col>
+              </Row></ListGroupItem>;
+            }, this)}
+          </ListGroup>
+          < Button
+            bsSize="large"
+            onClick={this.clearHotlist}><
+            Glyphicon
+            glyph="trash"/> {this.props.clear}</
+            Button >
+        </Panel>
       </div>
     );
   }
