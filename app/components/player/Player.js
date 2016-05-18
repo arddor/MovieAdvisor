@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {next, previous} from '../../redux/playlist';
+import {next, previous, movieDetail} from '../../redux/playlist';
 import {Row, Col, Button, Glyphicon} from 'react-bootstrap';
 import Youtube from '../youtube';
 
@@ -17,28 +17,35 @@ class Player extends Component {
   }
 
   onPreviousClick() {
-    this.props.previous();
+    let {index, results} = this.props;
+    index -= 1;
+    if (results.length > 0 && results.length > index){
+      let {id} = results[index];
+      this.props.previous();
+      this.props.movieDetail(id);
+    }
   }
 
   onNextClick() {
-    this.props.next();
+    let {index, results} = this.props;
+    index += 1;
+    if (results.length > 0 && results.length > index){
+      let {id} = results[index];
+      this.props.next();
+      this.props.movieDetail(id);
+    }
   }
 
   render() {
-    let {index, results} = this.props.playlist;
+    let {currentMovie} = this.props;
 
     let player;
-    if (results.length > 0 && results.length > index) {
-      if (results[index].youtube) {
-        let {key} = results[index].youtube;
-        player = <Youtube id={key}/>;
-      }
-      else {
-        player = <div>NO VIDEO FOUND</div>
-      }
-
+    if(currentMovie){
+      console.log(currentMovie);
+      if(currentMovie.videos.results.length > 0) player = <Youtube id={currentMovie.videos.results[0].key}/>;
+      else player = <div>NO VIDEO FOUND</div>;
     } else {
-      player = <div>NOTHING FOUND</div>
+      player = <div>NO VIDEO FOUND</div>
     }
 
     return (
@@ -64,11 +71,11 @@ class Player extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  playlist: state.playlist
+  ...state.playlist
 });
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({previous, next}, dispatch)
+  return bindActionCreators({previous, next, movieDetail}, dispatch)
 };
 
 

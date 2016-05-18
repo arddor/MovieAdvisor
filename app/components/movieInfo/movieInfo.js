@@ -9,31 +9,24 @@ class MovieInfo extends Component {
 
 
   render() {
-    let {index, results} = this.props;
-
+    let {currentMovie} = this.props;
     let movieInfo = null;
-    let info = null;
-    if (results.length > 0 && results.length > index) {
-      info = results[index];
 
+    if(currentMovie){
       movieInfo = (
-        <div className="MovieInfo">
-          <h3>{info.overview}</h3>
-        </div>
+        <Panel header={<h1>{currentMovie.title}</h1>}>
+          <div className="MovieInfo">
+            <h3>{currentMovie.overview}</h3>
+          </div>
+        </Panel>
       );
     } else {
-      // can be removed if the variable movieInfo is null nothing is shown
       movieInfo = <div>NOTHING FOUND</div>
     }
-    const title = (
-      <h1>{info.title}</h1>
-    );
 
     return (
       <div>
-        <Panel header={title}>
-          {movieInfo}
-        </Panel>
+        {movieInfo}
       </div>
     );
   }
