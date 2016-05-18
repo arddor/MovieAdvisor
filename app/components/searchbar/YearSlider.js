@@ -1,26 +1,24 @@
 import React from 'react';
 import InputRange from 'react-input-range';
+import {connect} from 'react-redux';
+import {updateYearRange} from './MovieSelectDucks';
+import {bindActionCreators} from 'redux';
+
 import css from 'react-input-range/dist/react-input-range.css';
 
 var sliderStyle={
   margin: '40px 0px'
 }
+
 class YearSlider extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      values: {
-        min: 2000,
-        max: 2005,
-      },
-    };
+    this.handleValuesChange = this.handleValuesChange.bind(this);
   }
 
   handleValuesChange(component, values) {
-    this.setState({
-      values: values,
-    });
+    this.props.updateYearRange(values);
   }
 
   render() {
@@ -31,10 +29,19 @@ class YearSlider extends React.Component {
         <InputRange
           maxValue={2016}
           minValue={1950}
-          value={this.state.values}
-          onChange={this.handleValuesChange.bind(this)}
+          value={this.props.yearRange}
+          onChange={this.handleValuesChange}
         /></div>
     );
   }
 }
-export default YearSlider;
+
+const mapStateToProps = (state) => ({
+  yearRange: state.search.yearRange
+});
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({updateYearRange}, dispatch)
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(YearSlider);

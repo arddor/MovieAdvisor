@@ -20,8 +20,13 @@ class SearchBar extends Component {
   }
 
   onButtonClick() {
-    console.log(this.props.genres);
-    this.props.search(this.props.genres, this.props.keywords);
+    this.props.search(
+      this.props.genres,
+      this.props.keywords,
+      this.props.actors,
+      this.props.yearRange.min,
+      this.props.yearRange.max
+    );
   }
 
   render() {
