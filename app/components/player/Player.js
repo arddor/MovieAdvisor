@@ -32,7 +32,7 @@ class Player extends Component {
       let {key} = results[index].youtube;
       player = <Youtube id={key}/>;
     } else {
-      player = <di>NOTHING FOUND</di>
+      player = <div>NOTHING FOUND</div>
     }
 
     return (
