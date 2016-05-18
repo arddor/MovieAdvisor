@@ -1,5 +1,19 @@
 
 .frame{
+  margin: 20px;
   text-align: center
 }
+.navbtn{
+}
+.navbtnprev{
+  float: right;
+}
+.navbtnnext{
+  float: left;
+}
 
+svg {
+    display: block;
+    width: 560px;
+    height: 315px;
+}

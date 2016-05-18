@@ -6,7 +6,7 @@ import {next} from '../../redux/playlist';
 
 const opts = {
   playerVars: {
-    autoplay: 1
+    autoplay: 0
   }
 };
 
@@ -23,7 +23,7 @@ class Youtube extends Component {
 
   render() {
     return (
-      <YouTube
+      <YouTube className="embed-responsive-item"
         videoId={this.props.id}
         opts={opts}
         onEnd={this.onPlaybackEnd}

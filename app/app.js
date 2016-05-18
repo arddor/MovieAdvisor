@@ -5,19 +5,29 @@ import HotOrNot from './components/hotOrNot';
 import SearchBar from "./components/searchbar";
 import Player from './components/player';
 import Keywords from './components/keywords';
-import {Grid} from 'react-bootstrap';
+import MovieInfo from './components/movieInfo';
+import {Grid, Row, Col} from 'react-bootstrap';
 
 
 const App = props => {
   return (
-    <Grid>
-      <div>
-        <SearchBar/>
-        <Keywords />
-        <Player />
-        <HotOrNot movieID="irgendwas"/>
-        <HotList />
-      </div>
+    <Grid fluid>
+      <Row>
+        <Col md={6} xsOffset={3}><SearchBar/></Col>
+      </Row>
+      <Row>
+        <Col md={3}>
+          <HotList/>
+        </Col>
+        <Col md={6}>
+          <Player />
+          <HotOrNot/>
+          <Keywords/>
+        </Col>
+        <Col md={3}>
+          <MovieInfo />
+        </Col>
+      </Row>
     </Grid>
   );
 };

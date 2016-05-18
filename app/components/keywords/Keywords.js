@@ -19,31 +19,36 @@ export default class Keyword extends React.Component {
     var movieId = this.props.results[currInd].id;
     var elements = [];
     var ll = 0; //list length -> initialized here only to show that when return() is called, it is still 0
+    var list = [];
+    var radius = 100;
+    var pi = Math.PI;
 
     getMovieKeywords(movieId)
     .then(function(result){
 
-      var list = result.keywords;
+      list = result.keywords;
       ll = list.length;
 
-      var radius = 100;
-      var pi = Math.PI;
+    });
 
-      console.log("length: "+ll);
-      for (var i = 0; i < ll; i++) {
-      var l =1150 + radius*Math.cos(2*i*pi/ll);
-      var r =560 + radius*Math.sin(2*i*pi/nn);
-      elements.push(<button className="btn btn-Lg btn-primary" style={{position:
-        'absolute', left: l, top: r}}>{list[i].name}</button>);
-        console.log(list[i].name);
+      if (ll > 0) {
+        for (var i = 0; i < ll; i++) {
+        var l =1150 + radius*Math.cos(2*i*pi/ll);
+        var r =560 + radius*Math.sin(2*i*pi/nn);
+        elements.push(<button className="btn btn-Lg btn-primary" style={{position:
+          'absolute', left: l, top: r}}>{list[i].name}</button>);
+        }
       }
+      else {
+        console.log("ll: "+ll);
 
-      });
+          elements.push(<button className="btn btn-Lg btn-primary" style={{position:
+            'absolute', left: l, top: r}}>"fuck you"</button>);
+        }
+
 
       return(
-
-        <div id="keyword-circle">
-          <p>list length: {ll}</p>
+        <div>
           {elements}
         </div>
 

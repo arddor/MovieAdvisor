@@ -6,6 +6,10 @@ var api = new TmdbApi({
   apiKey: apiConfig.apiKey
 });
 
+const makeAndList = (list) => {
+  return list.map(item => item.value).join();
+};
+
 
 export const getGenres = (input='', callback) => {
   api.request('/genre/movie/list', 'GET')
@@ -40,10 +44,17 @@ export const getActors = (input='', callback) => {
     .catch(err => console.log(err));
 };
 
-export const discover = (genres=null, keywords=null) => {
-  let g = genres ? genres.map(item => item.value).join() : null;
-  let k = keywords ? keywords.map(item => item.value).join() : null;
-  return api.request('/discover/movie', 'GET', {with_genres: g, with_keywords: k})
+export const discover = (genres=null, keywords=null, actors, minYear, maxYear) => {
+  let g = genres ? makeAndList(genres) : null;
+  let k = keywords ? makeAndList(keywords) : null;
+  let a = actors ? makeAndList(actors) : null;
+  return api.request('/discover/movie', 'GET', {
+    with_genres: g,
+    with_keywords: k,
+    with_cast: a,
+    "release_date.gte": minYear,
+    "release_date.lte": maxYear
+  })
     .then(res => res)
 };
 
@@ -58,8 +69,8 @@ export const getMovieKeywords = (id, language='en') => {
 
 
 
-export const discoverWithVideo = (genres=null, keywords=null) => {
-  return discover(genres, keywords)
+export const discoverWithVideo = (genres=null, keywords=null, actors, minYear, maxYear) => {
+  return discover(genres, keywords, actors, minYear, maxYear)
     .then(res => {
       return Promise.all(
         res.results.map(item => getVideos(item.id)
