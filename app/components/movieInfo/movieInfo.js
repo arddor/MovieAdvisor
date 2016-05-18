@@ -11,7 +11,7 @@ class MovieInfo extends Component {
     let {index, results} = this.props;
 
     let movieInfo = null;
-    if (results.length > 0 && results.length >= index) {
+    if (results.length > 0 && results.length > index) {
       let info = results[index];
 
       movieInfo = (

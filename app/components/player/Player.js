@@ -28,7 +28,7 @@ class Player extends Component {
     let {index, results} = this.props.playlist;
 
     let player;
-    if (results.length > 0 && results.length >= index) {
+    if (results.length > 0 && results.length > index) {
       let {key} = results[index].youtube;
       player = <Youtube id={key}/>;
     } else {

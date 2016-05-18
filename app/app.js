@@ -4,6 +4,7 @@ import HotList from './components/hotList';
 import HotOrNot from './components/hotOrNot';
 import SearchBar from "./components/searchbar";
 import Player from './components/player';
+import MovieInfo from './components/movieInfo';
 import {Grid, Row, Col} from 'react-bootstrap';
 
 
@@ -21,7 +22,9 @@ const App = props => {
           <Player />
           <HotOrNot movieID="irgendwas"/>
         </Col>
-        <Col md={2}>hier sollen die movie infos hin</Col>
+        <Col md={2}>
+          <MovieInfo />
+        </Col>
       </div>
     </Row>
       </Grid>

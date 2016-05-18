@@ -25,7 +25,7 @@ export default function reducer(state = initialState, action = {}) {
       };
 
     case NEXT:
-      if (state.index < 19){
+      if (state.index < state.results.length){
         return {
           ...state,
           index: state.index + 1
