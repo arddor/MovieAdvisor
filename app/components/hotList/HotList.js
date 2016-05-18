@@ -10,10 +10,7 @@ class HotList extends Component {
     super(props);
     this.clearHotlist = this.clearHotlist.bind(this);
     this.remove = this.remove.bind(this);
-    this.onPanelOpen = this.onPanelOpen.bind(this);
-    this.state = {
-      open: true
-    }
+    this.showMovie = this.showMovie.bind(this);
   }
 
   clearHotlist() {
@@ -24,10 +21,10 @@ class HotList extends Component {
     this.props.removeFromHotlist(index);
   }
 
-
-  onPanelOpen() {
-    this.setState({open: !this.state.open});
+  showMovie(index) {
+    console.log("show");
   }
+
 
   render() {
     var results = this.props.hotlist;
@@ -40,9 +37,10 @@ class HotList extends Component {
           <ListGroup>
             {results.map(function (result, index) {
               return <ListGroupItem><Row className={hotlistcss.hotlistitem} key={result.id}>
-                <Col md={5}><Image responsive src={"http://image.tmdb.org/t/p/w300"+result.backdrop_path}/></Col>
-                <Col md={5}> {result.original_title}
-                </Col>
+                <div onClick={() => this.showMovie(result.id)}><Col md={5}><Image responsive
+                                                                                  src={"http://image.tmdb.org/t/p/w300"+result.backdrop_path}/></Col>
+                  <Col md={5}> {result.original_title}
+                  </Col></div>
                 <Col md={2}><Button onClick={() => this.remove(index)} bsSize="xsmall">
                   <Glyphicon
                     glyph="trash"/></Button></Col>

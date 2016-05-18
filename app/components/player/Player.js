@@ -31,8 +31,6 @@ class Player extends Component {
     if (results.length > 0 && results.length > index) {
       if (results[index].youtube) {
         let {key} = results[index].youtube;
-
-
         player = <Youtube id={key}/>;
       }
       else {
@@ -55,7 +53,7 @@ class Player extends Component {
         </Row>
         <Row>
           <Col xs={12} className={playercss.frame}>
-            <div className="embed-responsive.embed-responsive-16by9">{player}</div>
+            <div className="embed-responsive embed-responsive-16by9">{player}</div>
           </Col>
         </Row>
       </Row>
