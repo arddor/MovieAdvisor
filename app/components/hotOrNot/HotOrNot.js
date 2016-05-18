@@ -56,13 +56,14 @@ class HotOrNot extends Component {
         < ButtonToolbar >
           < Button
             bsSize="large"
+            bsStyle="danger"
             onClick={this.onHotClicked}><
             Glyphicon
-            glyph="thumbs-up"/> {this.props.hot}</
+            glyph="fire"/> {this.props.hot}</
             Button >
-          < Button bsSize="large" onClick={this.onNotClicked}><
+          <Button bsSize="large" onClick={this.onNotClicked} bsStyle="warning">{this.props.not} <
             Glyphicon
-            glyph="thumbs-down"/> {this.props.not}
+            glyph="thumbs-down"/>
           </Button >
         </ ButtonToolbar >
       </ div >

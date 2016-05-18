@@ -41,7 +41,7 @@ class SearchBar extends Component {
 
     return (
       <div className={searchcss.searchbar}>
-        <Panel header={title} bsStyle="primary" collapsible expanded={this.state.open}
+        <Panel header={title} collapsible expanded={this.state.open}
                className={searchcss.panel}>
           <MovieSelect />
           <Button className="btn-block" onClick={this.onButtonClick} style={{marginBottom: '15px'}}>Search</Button>

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {next, previous} from '../../redux/playlist';
-import {Row, Col, Button} from 'react-bootstrap';
+import {Row, Col, Button, Glyphicon} from 'react-bootstrap';
 import Youtube from '../youtube';
 
 import playercss from './player.local.css';
@@ -42,13 +42,15 @@ class Player extends Component {
     }
 
     return (
-      <Row>
+      <div>
         <Row>
           <Col xs={6}>
-            <Button className={playercss.navbtnprev} onClick={this.onPreviousClick}>Previous</Button>
+            <Button className={playercss.navbtnprev} onClick={this.onPreviousClick}><Glyphicon
+              glyph="chevron-left"/> Previous</Button>
           </Col>
           <Col xs={6}>
-            <Button className={playercss.navbtnnext} onClick={this.onNextClick}>Next</Button>
+            <Button className={playercss.navbtnnext} onClick={this.onNextClick}>Next <Glyphicon
+              glyph="chevron-right"/></Button>
           </Col>
         </Row>
         <Row>
@@ -56,7 +58,7 @@ class Player extends Component {
             <div className="embed-responsive embed-responsive-16by9">{player}</div>
           </Col>
         </Row>
-      </Row>
+      </div>
     );
   }
 }

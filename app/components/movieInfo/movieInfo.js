@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
+import {Panel} from 'react-bootstrap';
 import {connect} from 'react-redux';
 
 class MovieInfo extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
   }
 
@@ -11,12 +12,12 @@ class MovieInfo extends Component {
     let {index, results} = this.props;
 
     let movieInfo = null;
+    let info = null;
     if (results.length > 0 && results.length > index) {
-      let info = results[index];
+      info = results[index];
 
       movieInfo = (
         <div className="MovieInfo">
-          <h1>{info.title}</h1>
           <h3>{info.overview}</h3>
         </div>
       );
@@ -24,11 +25,15 @@ class MovieInfo extends Component {
       // can be removed if the variable movieInfo is null nothing is shown
       movieInfo = <div>NOTHING FOUND</div>
     }
-
+    const title = (
+      <h1>{info.title}</h1>
+    );
 
     return (
       <div>
-        {movieInfo}
+        <Panel header={title}>
+          {movieInfo}
+        </Panel>
       </div>
     );
   }

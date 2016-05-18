@@ -7,10 +7,12 @@ import Player from './components/player';
 import MovieInfo from './components/movieInfo';
 import {Grid, Row, Col} from 'react-bootstrap';
 
+import appcss from './app.local.css';
+
 
 const App = props => {
   return (
-    <Grid fluid>
+    <Grid fluid className={appcss.bodyBG}>
       <Row>
         <Col md={6} xsOffset={3}><SearchBar/></Col>
       </Row>

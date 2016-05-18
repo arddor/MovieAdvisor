@@ -25,34 +25,38 @@ class HotList extends Component {
     console.log("show");
   }
 
-
   render() {
     var results = this.props.hotlist;
     const title = (
-      <h1>Your Hotlist</h1>
+      <h1>Your Hotlist <
+        Glyphicon
+        glyph="fire"/></h1>
     );
     return (
-      <div>
-        <Panel header={title}>
-          <ListGroup>
-            {results.map(function (result, index) {
-              return <ListGroupItem><Row className={hotlistcss.hotlistitem} key={result.id}>
-                <div onClick={() => this.showMovie(result.id)}><Col md={5}><Image responsive
-                                                                                  src={"http://image.tmdb.org/t/p/w300"+result.backdrop_path}/></Col>
-                  <Col md={5}> {result.original_title}
-                  </Col></div>
-                <Col md={2}><Button onClick={() => this.remove(index)} bsSize="xsmall">
-                  <Glyphicon
-                    glyph="trash"/></Button></Col>
-              </Row></ListGroupItem>;
-            }, this)}
-          </ListGroup>
+      <div className={hotlistcss.hotlist}>
+        <Panel header={title} className={hotlistcss.panelMovie}>
+          <div className={hotlistcss.hotlistbody}>
+            <ListGroup >
+              {results.map(function (result, index) {
+                return <ListGroupItem><Row className={hotlistcss.hotlistitem} key={result.id}>
+                  <div onClick={() => this.showMovie(result.id)}><Col md={5}><Image responsive
+                                                                                    src={"http://image.tmdb.org/t/p/w300"+result.backdrop_path}/></Col>
+                    <Col md={5}> {result.original_title}
+                    </Col></div>
+                  <Col md={2}><Button onClick={() => this.remove(index)} bsSize="xsmall">
+                    <Glyphicon
+                      glyph="trash"/></Button></Col>
+                </Row></ListGroupItem>;
+              }, this)}
+            </ListGroup>
+          </div>
           < Button
             bsSize="large"
             onClick={this.clearHotlist}><
             Glyphicon
             glyph="trash"/> {this.props.clear}</
             Button >
+
         </Panel>
       </div>
     );

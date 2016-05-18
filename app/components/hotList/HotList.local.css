@@ -1,3 +1,19 @@
-.hotlistitem{
-  margin-bottom:5px;
+.hotlistitem {
+  margin-bottom: 5px;
 }
+
+.panelBody {
+  background: #E5E5E5;
+}
+
+.panel-movie {
+  background: #1BBC9B;
+  border-color: #1BBC9B;
+  color: white;
+}
+
+.hotlistbody {
+  height: calc(100vh - 230px);
+  overflow-y: auto;
+}
+
