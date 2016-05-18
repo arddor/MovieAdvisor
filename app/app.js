@@ -11,23 +11,22 @@ import {Grid, Row, Col} from 'react-bootstrap';
 const App = props => {
   return (
     <Grid>
-    <Row>
-      <div>
-        <Col md={12}><h1>Movie Advisor</h1></Col>
+      <Row>
+        <SearchBar/>
+      </Row>
+      <Row>
         <Col md={2}>
-          <HotList />
+          <HotList/>
         </Col>
         <Col md={8}>
-          <SearchBar/>
           <Player />
           <HotOrNot movieID="irgendwas"/>
         </Col>
         <Col md={2}>
           <MovieInfo />
         </Col>
-      </div>
-    </Row>
-      </Grid>
+      </Row>
+    </Grid>
   );
 };
 

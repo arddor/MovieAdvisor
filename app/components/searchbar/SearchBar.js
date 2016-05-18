@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import css from './SearchBar.local.css';
 import MovieSelect from './MovieSelect';
-import {Button, Panel} from 'react-bootstrap';
+import {Button, Panel, PageHeader} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {search} from './../../redux/playlist';
@@ -13,7 +13,7 @@ class SearchBar extends Component {
     super(props);
 
     this.onButtonClick = this.onButtonClick.bind(this);
-
+    this.onPanelOpen = this.onPanelOpen.bind(this);
     this.state = {
       open: true
     }
@@ -29,12 +29,15 @@ class SearchBar extends Component {
     );
   }
 
+  onPanelOpen(){
+    this.setState({ open: !this.state.open });
+  }
+
   render() {
     return (
       <div>
-        <Button className={searchcss.btnhide} onClick={ ()=> this.setState({ open: !this.state.open })}>Show/Hide Searchpanel</Button>
-        <div className="clearfix"></div>
-        <Panel header={title} bsStyle="primary" collapsible expanded={this.state.open}>
+        <Panel header={title} bsStyle="primary" collapsible expanded={this.state.open}
+               className={this.state.open ? searchcss.panelOpen : searchcss.panelClosed} onClick={this.onPanelOpen}>
           <MovieSelect />
           <Button className="btn-block" onClick={this.onButtonClick}>Search</Button>
         </Panel>
@@ -43,9 +46,7 @@ class SearchBar extends Component {
   }
 }
 const title = (
-  <h3>
-    Search your Movies:
-  </h3>
+  <h1 className={searchcss.title}>Movie Advisor <div className={searchcss.smallTitle}>Search your movies</div></h1>
 );
 SearchBar.defaultProps = {
   text: 'Search Here:'

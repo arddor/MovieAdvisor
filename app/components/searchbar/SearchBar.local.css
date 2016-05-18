@@ -1,5 +1,3 @@
-
-
 .div{
   background-color: #efefef;
 }
@@ -7,4 +5,51 @@
   float:right;
   margin-bottom: 20px;
   margin-top: -45px;
+}
+
+.title{
+  font-size: 30px;
+}
+
+.smallTitle{
+  color: lightgray;
+  display: inline;
+  font-size: 15px;
+}
+
+.panelClosed{
+  margin-bottom: 50px;
+}
+
+.panelClosed:after{
+  content: ' ';
+  height: 0;
+  position: absolute;
+  width: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-top: 25px solid #337ab7;
+
+  /* positioning */
+  left: 48%;
+  z-index: 1;
+}
+
+.panelOpen{
+  margin-bottom: 50px;
+}
+
+.panelOpen:after{
+  content: ' ';
+  height: 0;
+  position: relative;
+  width: 0;
+  border-right: 25px solid transparent;
+  border-bottom: 25px solid #337ab7;
+  border-left: 25px solid transparent;
+
+  /* positioning */
+  left: 48%;
+  bottom: 23px;
+  z-index: 1;
 }
