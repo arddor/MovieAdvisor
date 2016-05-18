@@ -19,7 +19,7 @@ class Player extends Component {
   onPreviousClick() {
     let {index, results} = this.props;
     index -= 1;
-    if (results.length > 0 && results.length > index){
+    if (results.length > 0 && results.length > index && index >= 0){
       let {id} = results[index];
       this.props.previous();
       this.props.movieDetail(id);
