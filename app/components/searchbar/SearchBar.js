@@ -20,6 +20,7 @@ class SearchBar extends Component {
   }
 
   onButtonClick() {
+    this.setState({open: false});
     this.props.search(
       this.props.genres,
       this.props.keywords,
@@ -27,7 +28,7 @@ class SearchBar extends Component {
       this.props.yearRange.min,
       this.props.yearRange.max
     );
-    this.setState({open: false});
+
   }
 
   onPanelOpen(){

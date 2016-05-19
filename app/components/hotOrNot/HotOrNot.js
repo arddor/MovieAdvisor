@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {ButtonToolbar, Button, Glyphicon} from 'react-bootstrap';
+import {Row, Col, Button, Glyphicon} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as HotOrNotActionCreators from './HotOrNotDucks.js';
@@ -55,19 +55,20 @@ class HotOrNot extends Component {
     return (
       < div
         className="hotOrNot">
-        < ButtonToolbar >
-          < Button
-            bsSize="large"
-            bsStyle="danger"
-            onClick={this.onHotClicked}><
-            Glyphicon
-            glyph="fire"/> {this.props.hot}</
-            Button >
-          <Button bsSize="large" onClick={this.onNotClicked} bsStyle="warning">{this.props.not} <
-            Glyphicon
-            glyph="thumbs-down"/>
-          </Button >
-        </ ButtonToolbar >
+        <Row>
+          <Col xs={6}>
+            <Button bsStyle="danger" onClick={this.onHotClicked}><
+              Glyphicon
+              glyph="fire"/> {this.props.hot}</
+              Button >
+          </Col>
+          <Col xs={6}>
+            <Button onClick={this.onNotClicked} bsStyle="warning">{this.props.not} <
+              Glyphicon
+              glyph="thumbs-down"/>
+            </Button >
+          </Col>
+        </Row>
       </ div >
     );
   }
