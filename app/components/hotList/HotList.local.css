@@ -1,5 +1,6 @@
 .hotlistitem {
   margin-bottom: 5px;
+  cursor:pointer;
 }
 
 .panelBody {
@@ -13,7 +14,7 @@
 }
 
 .hotlistbody {
-  height: calc(100vh - 230px);
+  max-height: calc(100vh - 230px);
   overflow-y: auto;
 }
 

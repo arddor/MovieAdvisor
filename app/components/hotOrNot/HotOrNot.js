@@ -32,6 +32,7 @@ class HotOrNot extends Component {
   onHotClicked() {
     var movieObj = this.getMovieObject();
     if (!this.alreadyExists(this.props.hotOrNot.hotlist, movieObj)) {
+      console.log(movieObj);
       this.props.addToHot(movieObj);
     }
     else {
@@ -50,6 +51,7 @@ class HotOrNot extends Component {
   }
 
   render() {
+    console.log(this.props.playlist);
     return (
       < div
         className="hotOrNot">

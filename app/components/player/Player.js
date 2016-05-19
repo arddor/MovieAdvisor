@@ -42,7 +42,7 @@ class Player extends Component {
     let player;
     if(currentMovie){
       console.log(currentMovie);
-      if(currentMovie.videos.results.length > 0) player = <Youtube id={currentMovie.videos.results[0].key}/>;
+      if(currentMovie.videos && currentMovie.videos.results.length >  0) player = <Youtube id={currentMovie.videos.results[0].key}/>;
       else player = <div>NO VIDEO FOUND</div>;
     } else {
       player = <div>NO VIDEO FOUND</div>

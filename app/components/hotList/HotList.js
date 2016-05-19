@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import {Row, Col, Image, Button, Glyphicon, ListGroup, ListGroupItem, Panel} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import {changeMovieFromHotlist} from '../../redux/playlist';
 import hotlistcss from './HotList.local.css';
-import * as HotListActionCreators from '../hotOrNot/HotOrNotDucks';
+import {removeFromHotlist, clearHotlist} from '../hotOrNot/HotOrNotDucks';
 
 class HotList extends Component {
   constructor(props) {
@@ -21,8 +22,9 @@ class HotList extends Component {
     this.props.removeFromHotlist(index);
   }
 
-  showMovie(index) {
-    console.log("show");
+  showMovie(id) {
+    this.props.changeMovieFromHotlist(id);
+
   }
 
   render() {
@@ -38,8 +40,8 @@ class HotList extends Component {
           <div className={hotlistcss.hotlistbody}>
             <ListGroup >
               {results.map(function (result, index) {
-                return <ListGroupItem><Row className={hotlistcss.hotlistitem} key={result.id}>
-                  <div onClick={() => this.showMovie(result.id)}><Col md={5}><Image responsive
+                return <ListGroupItem><Row key={result.id}>
+                  <div className={hotlistcss.hotlistitem} onClick={() => this.showMovie(result.id)}><Col md={5}><Image responsive
                                                                                     src={"http://image.tmdb.org/t/p/w300"+result.backdrop_path}/></Col>
                     <Col md={5}> {result.original_title}
                     </Col></div>
@@ -74,7 +76,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators(HotListActionCreators, dispatch)
+  return bindActionCreators({removeFromHotlist, changeMovieFromHotlist,clearHotlist}, dispatch)
 };
 
 

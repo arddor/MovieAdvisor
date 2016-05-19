@@ -84,6 +84,19 @@ export function movieDetail(id){
   }
 }
 
+export function changeMovieFromHotlist(id){
+  return dispatch => {
+    getDetails(id)
+      .then(res => dispatch(changeMovie(res)))
+      .catch(err => {
+        console.log(err);
+        dispatch(changeMovie(null));
+      })
+  }
+}
+
+
+
 export function search(genres, keywords, actors, minYear, maxYear){
   return dispatch => {
     discover(genres, keywords, actors, minYear, maxYear)
