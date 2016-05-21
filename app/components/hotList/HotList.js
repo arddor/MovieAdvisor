@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import {Row, Col, Image, Button, Glyphicon, ListGroup, ListGroupItem, Panel} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import {changeMovieFromHotlist} from '../../redux/playlist';
 import hotlistcss from './HotList.local.css';
-import * as HotListActionCreators from '../hotOrNot/HotOrNotDucks';
+import {removeFromHotlist, clearHotlist} from '../hotOrNot/HotOrNotDucks';
 
 class HotList extends Component {
   constructor(props) {
@@ -21,38 +22,43 @@ class HotList extends Component {
     this.props.removeFromHotlist(index);
   }
 
-  showMovie(index) {
-    console.log("show");
-  }
+  showMovie(id) {
+    this.props.changeMovieFromHotlist(id);
 
+  }
 
   render() {
     var results = this.props.hotlist;
     const title = (
-      <h1>Your Hotlist</h1>
+      <h1>Your Hotlist <
+        Glyphicon
+        glyph="fire"/></h1>
     );
     return (
-      <div>
-        <Panel header={title}>
-          <ListGroup>
-            {results.map(function (result, index) {
-              return <ListGroupItem><Row className={hotlistcss.hotlistitem} key={result.id}>
-                <div onClick={() => this.showMovie(result.id)}><Col md={5}><Image responsive
-                                                                                  src={"http://image.tmdb.org/t/p/w300"+result.backdrop_path}/></Col>
-                  <Col md={5}> {result.original_title}
-                  </Col></div>
-                <Col md={2}><Button onClick={() => this.remove(index)} bsSize="xsmall">
-                  <Glyphicon
-                    glyph="trash"/></Button></Col>
-              </Row></ListGroupItem>;
-            }, this)}
-          </ListGroup>
+      <div className={hotlistcss.hotlist}>
+        <Panel header={title} className={hotlistcss.panelMovie}>
+          <div className={hotlistcss.hotlistbody}>
+            <ListGroup >
+              {results.map(function (result, index) {
+                return <ListGroupItem><Row key={result.id}>
+                  <div className={hotlistcss.hotlistitem} onClick={() => this.showMovie(result.id)}><Col md={5}><Image responsive
+                                                                                    src={"http://image.tmdb.org/t/p/w300"+result.backdrop_path}/></Col>
+                    <Col md={5}> {result.original_title}
+                    </Col></div>
+                  <Col md={2}><Button onClick={() => this.remove(index)} bsSize="xsmall">
+                    <Glyphicon
+                      glyph="trash"/></Button></Col>
+                </Row></ListGroupItem>;
+              }, this)}
+            </ListGroup>
+          </div>
           < Button
             bsSize="large"
             onClick={this.clearHotlist}><
             Glyphicon
             glyph="trash"/> {this.props.clear}</
             Button >
+
         </Panel>
       </div>
     );
@@ -70,7 +76,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators(HotListActionCreators, dispatch)
+  return bindActionCreators({removeFromHotlist, changeMovieFromHotlist,clearHotlist}, dispatch)
 };
 
 

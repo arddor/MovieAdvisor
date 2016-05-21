@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {next, previous} from '../../redux/playlist';
-import {Row, Col, Button} from 'react-bootstrap';
+import {next, previous, movieDetail} from '../../redux/playlist';
+import {Row, Col, Button, Glyphicon} from 'react-bootstrap';
 import Youtube from '../youtube';
 
 import playercss from './player.local.css';
@@ -17,38 +17,47 @@ class Player extends Component {
   }
 
   onPreviousClick() {
-    this.props.previous();
+    let {index, results} = this.props;
+    index -= 1;
+    if (results.length > 0 && results.length > index && index >= 0){
+      let {id} = results[index];
+      this.props.previous();
+      this.props.movieDetail(id);
+    }
   }
 
   onNextClick() {
-    this.props.next();
+    let {index, results} = this.props;
+    index += 1;
+    if (results.length > 0 && results.length > index){
+      let {id} = results[index];
+      this.props.next();
+      this.props.movieDetail(id);
+    }
   }
 
   render() {
-    let {index, results} = this.props.playlist;
+    let {currentMovie} = this.props;
 
     let player;
-    if (results.length > 0 && results.length > index) {
-      if (results[index].youtube) {
-        let {key} = results[index].youtube;
-        player = <Youtube id={key}/>;
-      }
-      else {
-        player = <div>NO VIDEO FOUND</div>
-      }
-
+    if(currentMovie){
+      console.log(currentMovie);
+      if(currentMovie.videos && currentMovie.videos.results.length >  0) player = <Youtube id={currentMovie.videos.results[0].key}/>;
+      else player = <div>NO VIDEO FOUND</div>;
     } else {
-      player = <div>NOTHING FOUND</div>
+      player = <div>NO VIDEO FOUND</div>
     }
 
     return (
-      <Row>
+      <div>
         <Row>
           <Col xs={6}>
-            <Button className={playercss.navbtnprev} onClick={this.onPreviousClick}>Previous</Button>
+            <Button className={playercss.navbtnprev} onClick={this.onPreviousClick}><Glyphicon
+              glyph="chevron-left"/> Previous</Button>
           </Col>
           <Col xs={6}>
-            <Button className={playercss.navbtnnext} onClick={this.onNextClick}>Next</Button>
+            <Button className={playercss.navbtnnext} onClick={this.onNextClick}>Next <Glyphicon
+              glyph="chevron-right"/></Button>
           </Col>
         </Row>
         <Row>
@@ -56,17 +65,17 @@ class Player extends Component {
             <div className="embed-responsive embed-responsive-16by9">{player}</div>
           </Col>
         </Row>
-      </Row>
+      </div>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  playlist: state.playlist
+  ...state.playlist
 });
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({previous, next}, dispatch)
+  return bindActionCreators({previous, next, movieDetail}, dispatch)
 };
 
 

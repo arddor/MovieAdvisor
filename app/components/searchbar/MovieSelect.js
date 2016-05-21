@@ -62,7 +62,7 @@ var MovieSelect = React.createClass({
           <Row>
             <Col sm={6}>
               <div className="section">
-                <h3 className="section-heading">Exclude Actor</h3>
+                <h3 className="section-heading">Include Actor</h3>
                 <Select.Async
                   multi name="form-field-name"
                   matchPos="start"

@@ -14,52 +14,45 @@ export default class Keyword extends React.Component {
   }
 
   render() {
-
-    var currInd = this.props.index;
-    var movieId = this.props.results[currInd].id;
-    var elements = [];
-    var ll = 0; //list length -> initialized here only to show that when return() is called, it is still 0
-    var list = [];
+    let {currentMovie} = this.props;
+    var list = currentMovie.keywords.keywords;
+    console.log("list");
+    console.log(list[2].name);
     var radius = 100;
     var pi = Math.PI;
+    var ll = list.length;
 
-    getMovieKeywords(movieId)
-    .then(function(result){
+    var elements = [];
 
-      list = result.keywords;
-      ll = list.length;
-
-    });
-
-      if (ll > 0) {
-        for (var i = 0; i < ll; i++) {
-        var l =1150 + radius*Math.cos(2*i*pi/ll);
-        var r =560 + radius*Math.sin(2*i*pi/nn);
+    if(ll > 0){
+      for (var i = 0; i < ll; i++) {
+        var l = 500+radius*Math.cos(2*i*pi/ll);
+        var r = 600+radius*Math.sin(2*i*pi/ll);
         elements.push(<button className="btn btn-Lg btn-primary" style={{position:
           'absolute', left: l, top: r}}>{list[i].name}</button>);
         }
       }
       else {
-        console.log("ll: "+ll);
+        console.log("ll: "+ ll);
 
-          elements.push(<button className="btn btn-Lg btn-primary" style={{position:
-            'absolute', left: l, top: r}}>"fuck you"</button>);
+        elements.push(<button className="btn btn-Lg btn-primary" style={{position:
+          'absolute', left: l, top: r}}>"fuck you"</button>);
         }
 
 
-      return(
-        <div>
+        return(
+          <div>
           {elements}
-        </div>
+          </div>
 
-      );
+        );
+      }
+
     }
 
-    }
 
+    const mapStateToProps = (state) => ({
+      ...state.playlist
+    });
 
-  const mapStateToProps = (state) => ({
-    ...state.playlist
-  });
-
-  export default connect(mapStateToProps)(Keyword);
+    export default connect(mapStateToProps)(Keyword);

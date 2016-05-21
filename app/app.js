@@ -7,13 +7,16 @@ import Player from './components/player';
 import Keywords from './components/keywords';
 import MovieInfo from './components/movieInfo';
 import {Grid, Row, Col} from 'react-bootstrap';
+import css from './app.css';
+
 
 
 const App = props => {
   return (
     <Grid fluid>
       <Row>
-        <Col md={6} xsOffset={3}><SearchBar/></Col>
+        <Col md={3}><h1 className="app-title">Movie Advisor</h1></Col>
+        <Col md={6}><SearchBar/></Col>
       </Row>
       <Row>
         <Col md={3}>

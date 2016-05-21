@@ -1,27 +1,36 @@
 import React, {Component} from 'react';
+import {Panel, Glyphicon} from 'react-bootstrap';
 import {connect} from 'react-redux';
 
 class MovieInfo extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
   }
 
 
-  render() {
-    let {index, results} = this.props;
+  getBudget() {
+    return (<div><Glyphicon glyph="euro"/> {this.props.currentMovie.budget}</div>);
+  }
 
+
+
+  render() {
+    let {currentMovie} = this.props;
     let movieInfo = null;
-    if (results.length > 0 && results.length > index) {
-      let info = results[index];
+    let budget = null;
+    if (currentMovie) {
+      if (currentMovie.budget)
+        budget = this.getBudget();
 
       movieInfo = (
-        <div className="MovieInfo">
-          <h1>{info.title}</h1>
-          <h3>{info.overview}</h3>
-        </div>
+        <Panel header={<h1>{currentMovie.title}</h1>}>
+          <div className="MovieInfo">
+            <h5>{currentMovie.overview}</h5>
+            {budget}
+          </div>
+        </Panel>
       );
     } else {
-      // can be removed if the variable movieInfo is null nothing is shown
       movieInfo = <div>NOTHING FOUND</div>
     }
 

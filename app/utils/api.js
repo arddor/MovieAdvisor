@@ -87,3 +87,7 @@ export const discoverWithVideo = (genres=null, keywords=null, actors, minYear, m
       })
     })
 };
+
+export const getDetails = (id, language='en') => {
+  return api.request(`/movie/${id}`, 'GET', {language, append_to_response: "keywords,videos"})
+};
