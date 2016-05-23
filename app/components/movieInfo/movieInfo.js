@@ -22,11 +22,15 @@ class MovieInfo extends Component {
       if (currentMovie.budget)
         budget = this.getBudget();
 
+      let voteNr = currentMovie.vote_average;
+      let someText = "/10";
+
       movieInfo = (
         <Panel header={<h1>{currentMovie.title}</h1>}>
           <div className="MovieInfo">
             <h5>{currentMovie.overview}</h5>
             {budget}
+            <h5> {'Average Rating: ' + voteNr + someText} </h5>
           </div>
         </Panel>
       );
