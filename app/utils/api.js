@@ -44,7 +44,7 @@ export const getActors = (input='', callback) => {
     .catch(err => console.log(err));
 };
 
-export const discover = (genres=null, keywords=null, actors, minYear, maxYear) => {
+export const discover = (genres=null, keywords=null, actors, minYear, maxYear, page=1) => {
   let g = genres ? makeAndList(genres) : null;
   let k = keywords ? makeAndList(keywords) : null;
   let a = actors ? makeAndList(actors) : null;
@@ -53,7 +53,8 @@ export const discover = (genres=null, keywords=null, actors, minYear, maxYear) =
     with_keywords: k,
     with_cast: a,
     "release_date.gte": minYear,
-    "release_date.lte": maxYear
+    "release_date.lte": maxYear,
+    page
   })
     .then(res => res)
 };

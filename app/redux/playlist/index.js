@@ -97,9 +97,9 @@ export function changeMovieFromHotlist(id){
 
 
 
-export function search(genres, keywords, actors, minYear, maxYear){
+export function search(genres, keywords, actors, minYear, maxYear, page){
   return dispatch => {
-    discover(genres, keywords, actors, minYear, maxYear)
+    discover(genres, keywords, actors, minYear, maxYear, page)
       .then(res => {
         dispatch(changePlaylist(res));
         let {results} = res;
