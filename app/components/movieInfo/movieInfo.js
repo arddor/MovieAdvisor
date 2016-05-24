@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Panel, Glyphicon} from 'react-bootstrap';
 import {connect} from 'react-redux';
 
-
 class MovieInfo extends Component {
   constructor(props) {
     super(props);
@@ -20,24 +19,34 @@ class MovieInfo extends Component {
     let movieInfo = null;
     let budget = null;
     if (currentMovie) {
-      if (currentMovie.budget) {
-        var title = currentMovie.title;
-        var info = currentMovie.overview;
+      if (currentMovie.budget)
+        budget = this.getBudget();
+
+      let voteNr = currentMovie.vote_average;
+      let someText = "/10";
+
+      movieInfo = (
+        <Panel header={<h1>{currentMovie.title}</h1>}>
+          <div className="MovieInfo">
+            <h5>{currentMovie.overview}</h5>
+            {budget}
+            <h5> {'Average Rating: ' + voteNr + someText} </h5>
+          </div>
+        </Panel>
+      );
     } else {
-        var title = " ";
-        var info = " ";
+      movieInfo = <div>NOTHING FOUND</div>
     }
-}
+
 
     return (
       <div>
-        <div className="movieTitle">{title}</div>
-        <div className="movieDescription">{info}</div>
-        <div className="movieBudget">{budget}</div>
+        {movieInfo}
       </div>
     );
+  }
 }
-}
+
 MovieInfo.defaultProps = {
   title: 'Please chose a movie',
   overview: '',

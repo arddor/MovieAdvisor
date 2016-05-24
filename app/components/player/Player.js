@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {next, previous, movieDetail} from '../../redux/playlist';
+import {next, previous, movieDetail, search} from '../../redux/playlist';
 import {Row, Col, Button, Glyphicon} from 'react-bootstrap';
 import Youtube from '../youtube';
 
@@ -23,6 +23,15 @@ class Player extends Component {
       let {id} = results[index];
       this.props.previous();
       this.props.movieDetail(id);
+    } else if(this.props.page > 0){
+      this.props.search(
+        this.props.genres,
+        this.props.keywords,
+        this.props.actors,
+        this.props.yearRange.min,
+        this.props.yearRange.max,
+        this.props.page - 1
+      );
     }
   }
 
@@ -33,6 +42,15 @@ class Player extends Component {
       let {id} = results[index];
       this.props.next();
       this.props.movieDetail(id);
+    } else if(this.props.page < this.props.total_pages){
+      this.props.search(
+        this.props.genres,
+        this.props.keywords,
+        this.props.actors,
+        this.props.yearRange.min,
+        this.props.yearRange.max,
+        this.props.page + 1
+      );
     }
   }
 
@@ -73,11 +91,12 @@ class Player extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  ...state.playlist
+  ...state.playlist,
+  ...state.search
 });
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({previous, next, movieDetail}, dispatch)
+  return bindActionCreators({previous, next, movieDetail, search}, dispatch)
 };
 
 
