@@ -6,7 +6,8 @@ import SearchBar from "./components/searchbar";
 import Player from './components/player';
 import Keywords from './components/keywords';
 import MovieInfo from './components/movieInfo';
-import {Grid, Row, Col} from 'react-bootstrap';
+import SideButton from './components/SideButton';
+import {Grid, Row, Col, Glyphicon} from 'react-bootstrap';
 import css from './app.css';
 
 
@@ -17,21 +18,24 @@ const App = props => {
       <Row>
         <Col md={3}><h1 className="app-title">Movie Advisor</h1></Col>
         <Col md={6}><SearchBar/></Col>
-        <Col md={3}><HotList/></Col>
       </Row>
       <Row>
         <Col md={3}>
-
+          <SideButton button={<Glyphicon glyph="fire"/>} position="left">
+            <HotList/>
+            <HotOrNot />
+          </SideButton>
         </Col>
         <Col md={6}>
           <div className="backgroundCircle">
             <Player/>
             <Keywords/>
-            <MovieInfo/>
           </div>
         </Col>
         <Col md={3}>
-          <HotOrNot/>
+          <SideButton button={<Glyphicon glyph="info-sign"/>} position="right">
+            <MovieInfo/>
+          </SideButton>
         </Col>
       </Row>
     </Grid>

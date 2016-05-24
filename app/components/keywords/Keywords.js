@@ -15,47 +15,51 @@ export default class Keyword extends React.Component {
 
   render() {
   //  this.getCircleCoordinates();
-    let {currentMovie} = this.props;
-    var provList = currentMovie.keywords.keywords;
-    var radius = 440;
-    var pi = Math.PI;
-    var list = [];
-    var elements = [];
+    var elements = null;
+    if(this.props.currentMovie) {
 
-    for(var i = 0; i < provList.length; i++) {
-      
-      if(provList[i].name.length < 13) {
-        list.push(provList[i]);
+
+      let {currentMovie} = this.props;
+      var provList = currentMovie.keywords.keywords;
+      var radius = 440;
+      var pi = Math.PI;
+      var list = [];
+      elements = [];
+
+      for (var i = 0; i < provList.length; i++) {
+
+        if (provList[i].name.length < 13) {
+          list.push(provList[i]);
+        }
       }
-    }
 
-    var ll = list.length;
+      var ll = list.length;
 
-    if(ll > 0){
-      for (var i = 0; i < ll; i++) {
-        var l = 300+radius*Math.cos(2*i*pi/ll);
-        var r = 300+radius*Math.sin(2*i*pi/ll);
-        elements.push(<div className="keywordCircle" style={{position:
+      if (ll > 0) {
+        for (var i = 0; i < ll; i++) {
+          var l = 300 + radius * Math.cos(2 * i * pi / ll);
+          var r = 300 + radius * Math.sin(2 * i * pi / ll);
+          elements.push(<div className="keywordCircle" style={{position:
           'absolute', left: l, top: r}}>{list[i].name}</div>);
         }
       }
       else {
-        console.log("ll: "+ ll);
+        console.log("ll: " + ll);
 
         elements.push(<button className="btn btn-Lg btn-primary" style={{position:
-          'absolute', left: l, top: r}}>"fuck you"</button>);
-        }
-
-
-        return(
-          <div>
-          {elements}
-          </div>
-
-        );
+        'absolute', left: l, top: r}}>"fuck you"</button>);
       }
 
     }
+
+    return(
+      <div>
+        {elements}
+      </div>
+    );
+  }
+
+}
 
 
     const mapStateToProps = (state) => ({

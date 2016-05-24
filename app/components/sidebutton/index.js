@@ -1,3 +1,3 @@
-/**
- * Created by Marc on 24.05.16.
- */
+import SideButton from './SideButton';
+
+export default SideButton;
