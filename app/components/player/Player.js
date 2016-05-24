@@ -36,7 +36,9 @@ class Player extends Component {
     }
   }
 
+
   render() {
+
     let {currentMovie} = this.props;
 
     let player;
@@ -50,7 +52,7 @@ class Player extends Component {
 
     return (
       <div>
-        <Row>
+        <Row className="prevNextButtons">
           <Col xs={6}>
             <Button className={playercss.navbtnprev} onClick={this.onPreviousClick}><Glyphicon
               glyph="chevron-left"/> Previous</Button>
@@ -60,8 +62,8 @@ class Player extends Component {
               glyph="chevron-right"/></Button>
           </Col>
         </Row>
-        <Row>
-          <Col xs={12} className={playercss.frame}>
+        <Row ref='videoframe'>
+          <Col id="video" className={playercss.frame}>
             <div className="embed-responsive embed-responsive-16by9">{player}</div>
           </Col>
         </Row>

@@ -17,18 +17,21 @@ const App = props => {
       <Row>
         <Col md={3}><h1 className="app-title">Movie Advisor</h1></Col>
         <Col md={6}><SearchBar/></Col>
+        <Col md={3}><HotList/></Col>
       </Row>
       <Row>
         <Col md={3}>
-          <HotList/>
+
         </Col>
         <Col md={6}>
-          <Player />
-          <HotOrNot/>
-          <Keywords/>
+          <div className="backgroundCircle">
+            <Player/>
+            <Keywords/>
+            <MovieInfo/>
+          </div>
         </Col>
         <Col md={3}>
-          <MovieInfo />
+          <HotOrNot/>
         </Col>
       </Row>
     </Grid>
@@ -36,3 +39,15 @@ const App = props => {
 };
 
 export default App;
+
+
+/*
+.backgroundCircle {
+  border-radius: 50%;
+	width: 100%;
+	height: auto;
+  background: white;
+  position: absolute;
+  padding-top: 100%;
+}
+*/

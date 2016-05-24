@@ -1,13 +1,18 @@
 
 .frame{
   margin: 20px;
-  text-align: center
+text-align: center;
+position: relative;
+width: 600px;
+top: 65px;
+left: 45px;
 }
-.navbtn{
-}
+
 .navbtnprev{
+  width: 130px;
   float: right;
 }
 .navbtnnext{
+  width: 130px;
   float: left;
 }
