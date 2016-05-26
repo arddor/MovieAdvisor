@@ -1,5 +1,6 @@
 const UPDATEGENRE = 'movieadvisor/searchbar/updateGenre';
 const UPDATEKEYWORD = 'movieadvisor/searchbar/updateKeyword';
+const ADDKEYWORD = 'movieadvisor/searchbar/addKeyword';
 const UPDATEACTOR = 'movieadvisor/searchbar/updateActor';
 const UPDATEYEARRANGE = 'movieadvisor/searchbar/updateYearRange';
 
@@ -25,6 +26,12 @@ export default function reducer(state = initialState, action = {}) {
       return {
         ...state,
         keywords: [...action.payload]
+      };
+
+    case ADDKEYWORD:
+      return {
+        ...state,
+        keywords: [...state.keywords, action.payload]
       };
 
     case UPDATEACTOR:
@@ -57,5 +64,9 @@ export function updateActor(actor) {
 }
 
 export function updateYearRange(years){
-  return {type: UPDATEYEARRANGE, payload: years}
+  return {type: UPDATEYEARRANGE, payload: years};
+}
+
+export function addKeyword(keyword){
+  return {type: ADDKEYWORD, payload: keyword};
 }

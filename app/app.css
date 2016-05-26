@@ -12,16 +12,6 @@
 
 }
 
-.keywordCircle {
-  border-radius: 50%;
-	width: 100px;
-	height: 100px;
-  line-height: 100px;
-  background: black;
-  text-align: center;
-
-}
-
 .movieTitle {
   font-size: 250%;
   margin-top: -350px;

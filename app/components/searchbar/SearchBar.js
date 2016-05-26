@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import css from './SearchBar.local.css';
 import MovieSelect from './MovieSelect';
 import {Button, Panel, PageHeader} from 'react-bootstrap';
 import {connect} from 'react-redux';

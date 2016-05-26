@@ -1,5 +1,4 @@
+import KeywordList from './KeywordList';
 
-import Keyword from './Keywords';
 
-
-export default Keyword;
+export default KeywordList;

@@ -1,1 +1,14 @@
 
+.keywordCircle {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  background: black;
+  text-align: center;
+}
+
+.keywordCircle:hover{
+  background: dimgrey;
+  cursor: pointer;
+}
