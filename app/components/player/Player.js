@@ -23,7 +23,7 @@ class Player extends Component {
       let {id} = results[index];
       this.props.previous();
       this.props.movieDetail(id);
-    } else if(this.props.page > 0){
+    } else if(this.props.page > 1){
       this.props.search(
         this.props.genres,
         this.props.keywords,
