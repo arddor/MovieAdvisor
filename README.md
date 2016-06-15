@@ -9,6 +9,10 @@ the actors in the movie. The idea is to present trailers to the user rather than
 himself. The intuitive user interface allows to switch easily between possibles movies and bookmark movies which are
 interesting in the "hotlist". The data is provided by the popular website [themoviedb](https://www.themoviedb.org/).
 
+## Demo
+
+Here you can check out the [MovieAdvisor](http://arddor.github.io/MovieAdvisor/).
+
 ## Getting Started
 
 
@@ -30,6 +34,7 @@ interesting in the "hotlist". The data is provided by the popular website [themo
     ```
     http://localhost:3030/
     ```
+    
 ## Technologies
 The Project makes use of the following libaries and technologies:
 
