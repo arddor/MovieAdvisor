@@ -1,0 +1,34 @@
+.app-title {
+  font-weight: bolder !important;
+  text-align: center;
+}
+
+.backgroundCircle {
+  border-radius: 50%;
+	width: 700px;
+	height: 700px;
+  background: black;
+  position: absolute;
+
+}
+
+.movieTitle {
+  font-size: 250%;
+  margin-top: -350px;
+  width: 400px;
+  text-align: center;
+  margin-left: 150px;
+
+
+}
+
+.movieDescription {
+  margin-top: 360px;
+  width: 400px;
+  text-align: center;
+  margin-left: 150px;
+}
+
+.prevNextButtons  {
+  margin-top: 50px;
+}

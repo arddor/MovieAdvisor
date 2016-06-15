@@ -18,3 +18,32 @@
   overflow-y: auto;
 }
 
+
+
+.closed{
+  content: ' ';
+  height: 0;
+  position: relative;
+  width: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-top: 25px solid #464545;
+
+  margin-top: -21px;
+  left: 43%;
+  z-index: 1;
+}
+
+.open{
+  content: ' ';
+  height: 0;
+  position: relative;
+  width: 0;
+  border-right: 25px solid transparent;
+  border-bottom: 25px solid #464545;
+  border-left: 25px solid transparent;
+
+  bottom: 46px;
+  left: 43%;
+  z-index: 1;
+}

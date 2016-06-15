@@ -34,7 +34,7 @@ var MovieSelect = React.createClass({
           <Row>
             <Col sm={6}>
               <div className="section">
-                <h3 className="section-heading">Genre</h3>
+                <h4 className="section-heading">Genre</h4>
                 <Select.Async
                   multi name="form-field-name"
                   matchPos="start"
@@ -47,7 +47,7 @@ var MovieSelect = React.createClass({
             </Col>
             <Col sm={6}>
               <div className="section">
-                <h3 className="section-heading">Keyword</h3>
+                <h4 className="section-heading">Keyword</h4>
                 <Select.Async
                   multi name="form-field-name"
                   matchPos="start"
@@ -62,7 +62,7 @@ var MovieSelect = React.createClass({
           <Row>
             <Col sm={6}>
               <div className="section">
-                <h3 className="section-heading">Include Actor</h3>
+                <h4 className="section-heading">Include Actor</h4>
                 <Select.Async
                   multi name="form-field-name"
                   matchPos="start"

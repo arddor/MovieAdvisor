@@ -63,6 +63,12 @@ export const getVideos = (id, language='en') => {
   return api.request(`/movie/${id}/videos`, 'GET', {language})
 };
 
+export const getMovieKeywords = (id, language='en') => {
+  return api.request(`/movie/${id}/keywords`, 'GET', {language})
+
+};
+
+
 
 export const discoverWithVideo = (genres=null, keywords=null, actors, minYear, maxYear) => {
   return discover(genres, keywords, actors, minYear, maxYear)

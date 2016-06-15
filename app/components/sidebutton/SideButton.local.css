@@ -1,0 +1,55 @@
+
+
+.sidenav {
+  width: 25%; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  display: block;
+}
+
+.slideoutLeft {
+  position: fixed;
+  top: 20%;
+  left: 0;
+  z-index: 1;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+
+.slideoutRight {
+  position: fixed;
+  top: 20%;
+  right: 0;
+  z-index: 1;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+
+.innerLeft {
+  position: fixed;
+  top: 20%;
+  width: 25%;
+  left: -25%;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+
+.innerRight {
+  position: fixed;
+  top: 20%;
+  width: 25%;
+  right: -25%;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+
