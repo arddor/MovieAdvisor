@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import css from './SearchBar.local.css';
 import MovieSelect from './MovieSelect';
 import {Button, Panel, PageHeader} from 'react-bootstrap';
 import {connect} from 'react-redux';
@@ -37,7 +36,7 @@ class SearchBar extends Component {
 
   render() {
     const title = (
-      <h1 className={searchcss.title} onClick={this.onPanelOpen}>Movie Advisor <div className={searchcss.smallTitle}>Search your movies</div></h1>
+      <h1 className={searchcss.title} onClick={this.onPanelOpen}>Search for movies</h1>
     );
 
     return (

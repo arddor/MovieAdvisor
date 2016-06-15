@@ -12,6 +12,11 @@ class HotList extends Component {
     this.clearHotlist = this.clearHotlist.bind(this);
     this.remove = this.remove.bind(this);
     this.showMovie = this.showMovie.bind(this);
+
+    this.onPanelOpen = this.onPanelOpen.bind(this);
+    this.state = {
+      open: true
+    }
   }
 
   clearHotlist() {
@@ -27,6 +32,10 @@ class HotList extends Component {
 
   }
 
+  onPanelOpen(){
+    this.setState({ open: !this.state.open });
+  }
+
   render() {
     var results = this.props.hotlist;
     const title = (
@@ -36,7 +45,7 @@ class HotList extends Component {
     );
     return (
       <div className={hotlistcss.hotlist}>
-        <Panel header={title} className={hotlistcss.panelMovie}>
+        <Panel header={title} collapsible expanded={this.state.open} className={hotlistcss.panelMovie}>
           <div className={hotlistcss.hotlistbody}>
             <ListGroup >
               {results.map(function (result, index) {
@@ -53,13 +62,15 @@ class HotList extends Component {
             </ListGroup>
           </div>
           < Button
-            bsSize="large"
-            onClick={this.clearHotlist}><
-            Glyphicon
-            glyph="trash"/> {this.props.clear}</
-            Button >
+            className="btn-block"
+            onClick={this.clearHotlist}
+            style={{marginBottom: '15px'}}>
+            <Glyphicon glyph="trash" style={{marginRight: '10 px'}}/>
+            {this.props.clear}
+          </Button >
 
         </Panel>
+        <div className={this.state.open ? hotlistcss.open : hotlistcss.closed} onClick={this.onPanelOpen}></div>
       </div>
     );
   }
