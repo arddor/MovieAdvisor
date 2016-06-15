@@ -4,49 +4,39 @@
 
 ## About
 
-This project uses [Feathers](http://feathersjs.com). An open source web  framework for building modern real-time applications.
+The project offers a platform to search for movies by common parameters like year range, genre, specific keywords and 
+the actors in the movie. The idea is to present trailers to the user rather than that he has to read all the information
+himself. The intuitive user interface allows to switch easily between possibles movies and bookmark movies which are
+interesting in the "hotlist". The data is provided by the popular website [themoviedb](https://www.themoviedb.org/).
 
 ## Getting Started
 
-Getting up and running is as easy as 1, 2, 3.
 
 1. Make sure you have [NodeJS](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
-2. Make sure you have [MongoDB](https://www.mongodb.org/) installed and running.
-3. Install your dependencies
+2. Clone the repository
+3. Install the dependencies
     
     ```
     cd path/to/MovieAdvisor; npm install
     ```
 
-4. Start your app
+4. Start the app
     
     ```
     npm start
     ```
+5. Visit
+
+    ```
+    http://localhost:3030/
+    ```
 ## Technologies
-The Project makes use of the following libaries:
+The Project makes use of the following libaries and technologies:
 
-- [React](https://facebook.github.io/react/)
+- [React](https://facebook.github.io/react/) with ES6
 - [Redux](http://redux.js.org/)
-
-## Project Structure
-
-
-## Testing
-
-Simply run `npm test` and all your tests in the `test/` directory will be run.
-
-## Scaffolding
-
-Feathers has a powerful generator. Here's just a few things that it can do:
-
-- **Generate a new Service:** `yo feathers:service`
-- **Generate a new Hook:** `yo feathers:hook`
-- **Generate a new Model:** `yo feathers:model`
-
-## Help
-
-For more information on all the things you can do with Feathers visit [docs.feathersjs.com](http://docs.feathersjs.com).
+- [Webpack](https://github.com/webpack/webpack)
+- [CSS Modules](https://github.com/css-modules/css-modules)
 
 ## Changelog
 
